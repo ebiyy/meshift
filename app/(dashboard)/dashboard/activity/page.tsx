@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Settings,
   LogOut,
@@ -10,9 +10,9 @@ import {
   Mail,
   CheckCircle,
   type LucideIcon,
-} from 'lucide-react';
-import { ActivityType } from '@/lib/db/schema';
-import { getActivityLogs } from '@/lib/db/queries';
+} from "lucide-react";
+import { ActivityType } from "@/lib/db/schema";
+import { getActivityLogs } from "@/lib/db/queries";
 
 const iconMap: Record<ActivityType, LucideIcon> = {
   [ActivityType.SIGN_UP]: UserPlus,
@@ -31,7 +31,7 @@ function getRelativeTime(date: Date) {
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  if (diffInSeconds < 60) return 'just now';
+  if (diffInSeconds < 60) return "just now";
   if (diffInSeconds < 3600)
     return `${Math.floor(diffInSeconds / 60)} minutes ago`;
   if (diffInSeconds < 86400)
@@ -44,27 +44,27 @@ function getRelativeTime(date: Date) {
 function formatAction(action: ActivityType): string {
   switch (action) {
     case ActivityType.SIGN_UP:
-      return 'You signed up';
+      return "You signed up";
     case ActivityType.SIGN_IN:
-      return 'You signed in';
+      return "You signed in";
     case ActivityType.SIGN_OUT:
-      return 'You signed out';
+      return "You signed out";
     case ActivityType.UPDATE_PASSWORD:
-      return 'You changed your password';
+      return "You changed your password";
     case ActivityType.DELETE_ACCOUNT:
-      return 'You deleted your account';
+      return "You deleted your account";
     case ActivityType.UPDATE_ACCOUNT:
-      return 'You updated your account';
+      return "You updated your account";
     case ActivityType.CREATE_TEAM:
-      return 'You created a new team';
+      return "You created a new team";
     case ActivityType.REMOVE_TEAM_MEMBER:
-      return 'You removed a team member';
+      return "You removed a team member";
     case ActivityType.INVITE_TEAM_MEMBER:
-      return 'You invited a team member';
+      return "You invited a team member";
     case ActivityType.ACCEPT_INVITATION:
-      return 'You accepted an invitation';
+      return "You accepted an invitation";
     default:
-      return 'Unknown action occurred';
+      return "Unknown action occurred";
   }
 }
 
@@ -72,34 +72,50 @@ export default async function ActivityPage() {
   const logs = await getActivityLogs();
 
   return (
-    <section className="flex-1 p-4 lg:p-8">
-      <h1 className="text-lg lg:text-2xl font-medium text-gray-900 mb-6">
+    <section className="flex-1 p-4 lg:p-8" data-oid="u2db2kg">
+      <h1
+        className="text-lg lg:text-2xl font-medium text-gray-900 mb-6"
+        data-oid="lzb8nrw"
+      >
         Activity Log
       </h1>
-      <Card>
-        <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
+      <Card data-oid="_atibt9">
+        <CardHeader data-oid="j6hlglq">
+          <CardTitle data-oid="vn:4322">Recent Activity</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent data-oid="gor:q7u">
           {logs.length > 0 ? (
-            <ul className="space-y-4">
+            <ul className="space-y-4" data-oid="g3s.n0l">
               {logs.map((log) => {
                 const Icon = iconMap[log.action as ActivityType] || Settings;
                 const formattedAction = formatAction(
-                  log.action as ActivityType
+                  log.action as ActivityType,
                 );
 
                 return (
-                  <li key={log.id} className="flex items-center space-x-4">
-                    <div className="bg-orange-100 rounded-full p-2">
-                      <Icon className="w-5 h-5 text-orange-600" />
+                  <li
+                    key={log.id}
+                    className="flex items-center space-x-4"
+                    data-oid="38d7bgj"
+                  >
+                    <div
+                      className="bg-orange-100 rounded-full p-2"
+                      data-oid="c.et80r"
+                    >
+                      <Icon
+                        className="w-5 h-5 text-orange-600"
+                        data-oid="lwj7t9i"
+                      />
                     </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">
+                    <div className="flex-1" data-oid="x4k_f9a">
+                      <p
+                        className="text-sm font-medium text-gray-900"
+                        data-oid="az2ats8"
+                      >
                         {formattedAction}
                         {log.ipAddress && ` from IP ${log.ipAddress}`}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-500" data-oid="6z7ome3">
                         {getRelativeTime(new Date(log.timestamp))}
                       </p>
                     </div>
@@ -108,12 +124,22 @@ export default async function ActivityPage() {
               })}
             </ul>
           ) : (
-            <div className="flex flex-col items-center justify-center text-center py-12">
-              <AlertCircle className="h-12 w-12 text-orange-500 mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div
+              className="flex flex-col items-center justify-center text-center py-12"
+              data-oid="w.hhnmv"
+            >
+              <AlertCircle
+                className="h-12 w-12 text-orange-500 mb-4"
+                data-oid="ep8lx2l"
+              />
+
+              <h3
+                className="text-lg font-semibold text-gray-900 mb-2"
+                data-oid="v69ur9."
+              >
                 No activity yet
               </h3>
-              <p className="text-sm text-gray-500 max-w-sm">
+              <p className="text-sm text-gray-500 max-w-sm" data-oid="q151pqn">
                 When you perform actions like signing in or updating your
                 account, they'll appear here.
               </p>

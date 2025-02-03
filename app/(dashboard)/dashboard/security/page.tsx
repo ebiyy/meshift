@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Lock, Trash2, Loader2 } from 'lucide-react';
-import { startTransition, useActionState } from 'react';
-import { updatePassword, deleteAccount } from '@/app/(login)/actions';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Lock, Trash2, Loader2 } from "lucide-react";
+import { startTransition, useActionState } from "react";
+import { updatePassword, deleteAccount } from "@/app/(login)/actions";
 
 type ActionState = {
   error?: string;
@@ -17,15 +17,15 @@ export default function SecurityPage() {
   const [passwordState, passwordAction, isPasswordPending] = useActionState<
     ActionState,
     FormData
-  >(updatePassword, { error: '', success: '' });
+  >(updatePassword, { error: "", success: "" });
 
   const [deleteState, deleteAction, isDeletePending] = useActionState<
     ActionState,
     FormData
-  >(deleteAccount, { error: '', success: '' });
+  >(deleteAccount, { error: "", success: "" });
 
   const handlePasswordSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
+    event: React.FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
     // If you call the Server Action directly, it will automatically
@@ -41,7 +41,7 @@ export default function SecurityPage() {
   };
 
   const handleDeleteSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
+    event: React.FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
     startTransition(() => {
@@ -50,18 +50,27 @@ export default function SecurityPage() {
   };
 
   return (
-    <section className="flex-1 p-4 lg:p-8">
-      <h1 className="text-lg lg:text-2xl font-medium bold text-gray-900 mb-6">
+    <section className="flex-1 p-4 lg:p-8" data-oid="93vf3w-">
+      <h1
+        className="text-lg lg:text-2xl font-medium bold text-gray-900 mb-6"
+        data-oid="efydezz"
+      >
         Security Settings
       </h1>
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Password</CardTitle>
+      <Card className="mb-8" data-oid="55pyz6y">
+        <CardHeader data-oid="smz8j9k">
+          <CardTitle data-oid="1:0y:36">Password</CardTitle>
         </CardHeader>
-        <CardContent>
-          <form className="space-y-4" onSubmit={handlePasswordSubmit}>
-            <div>
-              <Label htmlFor="current-password">Current Password</Label>
+        <CardContent data-oid="8ldxppg">
+          <form
+            className="space-y-4"
+            onSubmit={handlePasswordSubmit}
+            data-oid="lrv7f5v"
+          >
+            <div data-oid="c3wy2yn">
+              <Label htmlFor="current-password" data-oid="od.fq2o">
+                Current Password
+              </Label>
               <Input
                 id="current-password"
                 name="currentPassword"
@@ -70,10 +79,13 @@ export default function SecurityPage() {
                 required
                 minLength={8}
                 maxLength={100}
+                data-oid="zmacwv:"
               />
             </div>
-            <div>
-              <Label htmlFor="new-password">New Password</Label>
+            <div data-oid="9r4hjwr">
+              <Label htmlFor="new-password" data-oid="z2aks1m">
+                New Password
+              </Label>
               <Input
                 id="new-password"
                 name="newPassword"
@@ -82,10 +94,13 @@ export default function SecurityPage() {
                 required
                 minLength={8}
                 maxLength={100}
+                data-oid="yx6pa:l"
               />
             </div>
-            <div>
-              <Label htmlFor="confirm-password">Confirm New Password</Label>
+            <div data-oid="9ffx1qm">
+              <Label htmlFor="confirm-password" data-oid="lud:.lx">
+                Confirm New Password
+              </Label>
               <Input
                 id="confirm-password"
                 name="confirmPassword"
@@ -93,27 +108,36 @@ export default function SecurityPage() {
                 required
                 minLength={8}
                 maxLength={100}
+                data-oid="rqks53_"
               />
             </div>
             {passwordState.error && (
-              <p className="text-red-500 text-sm">{passwordState.error}</p>
+              <p className="text-red-500 text-sm" data-oid="-:vkcg3">
+                {passwordState.error}
+              </p>
             )}
             {passwordState.success && (
-              <p className="text-green-500 text-sm">{passwordState.success}</p>
+              <p className="text-green-500 text-sm" data-oid="dap9hhf">
+                {passwordState.success}
+              </p>
             )}
             <Button
               type="submit"
               className="bg-orange-500 hover:bg-orange-600 text-white"
               disabled={isPasswordPending}
+              data-oid="79c6a2a"
             >
               {isPasswordPending ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2
+                    className="mr-2 h-4 w-4 animate-spin"
+                    data-oid="323rz38"
+                  />
                   Updating...
                 </>
               ) : (
                 <>
-                  <Lock className="mr-2 h-4 w-4" />
+                  <Lock className="mr-2 h-4 w-4" data-oid="._szc0h" />
                   Update Password
                 </>
               )}
@@ -122,17 +146,23 @@ export default function SecurityPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Delete Account</CardTitle>
+      <Card data-oid="qhfw_-_">
+        <CardHeader data-oid="c6bsi:4">
+          <CardTitle data-oid=":g2uawr">Delete Account</CardTitle>
         </CardHeader>
-        <CardContent>
-          <p className="text-sm text-gray-500 mb-4">
+        <CardContent data-oid="cbq5:11">
+          <p className="text-sm text-gray-500 mb-4" data-oid="_lit7l6">
             Account deletion is non-reversable. Please proceed with caution.
           </p>
-          <form onSubmit={handleDeleteSubmit} className="space-y-4">
-            <div>
-              <Label htmlFor="delete-password">Confirm Password</Label>
+          <form
+            onSubmit={handleDeleteSubmit}
+            className="space-y-4"
+            data-oid="22o6que"
+          >
+            <div data-oid="sao.zdd">
+              <Label htmlFor="delete-password" data-oid="uzxuu5_">
+                Confirm Password
+              </Label>
               <Input
                 id="delete-password"
                 name="password"
@@ -140,25 +170,32 @@ export default function SecurityPage() {
                 required
                 minLength={8}
                 maxLength={100}
+                data-oid="8_1_62q"
               />
             </div>
             {deleteState.error && (
-              <p className="text-red-500 text-sm">{deleteState.error}</p>
+              <p className="text-red-500 text-sm" data-oid="svb:1vz">
+                {deleteState.error}
+              </p>
             )}
             <Button
               type="submit"
               variant="destructive"
               className="bg-red-600 hover:bg-red-700"
               disabled={isDeletePending}
+              data-oid="supbq5v"
             >
               {isDeletePending ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2
+                    className="mr-2 h-4 w-4 animate-spin"
+                    data-oid="zv1n3d9"
+                  />
                   Deleting...
                 </>
               ) : (
                 <>
-                  <Trash2 className="mr-2 h-4 w-4" />
+                  <Trash2 className="mr-2 h-4 w-4" data-oid="fy6l3:p" />
                   Delete Account
                 </>
               )}
